@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #define CAPACITY 5
 int stack[CAPACITY];
 int top=-1;
@@ -6,7 +7,7 @@ int top=-1;
 //Functions checks if the stack is full or not
 int isfull()
 {
-    if(top=CAPACITY-1)
+    if(top==CAPACITY-1)
     return 1;
     else
     return 0;
@@ -29,6 +30,7 @@ int pop()
     printf("Operation Failed:The stack is empty");
     else
     {ele=stack[top];
+    printf("%d is popped",ele);
     top--;}
     return top;
 }
@@ -39,8 +41,9 @@ void push(int ele)
     if(isfull())
     printf("Operation Failed:The stack is full");
     else
-    {stack[top]=ele;
-    top++;}
+    {top++;
+    stack[top]=ele;
+    printf("%d is pushed",ele);}
 
 }
 
@@ -48,7 +51,7 @@ void push(int ele)
 int peek()
 {
     if(isEmpty())
-    return 0;
+    printf("Insert elements to peek");
     else
     return stack[top];
 }
@@ -69,9 +72,36 @@ void traverse()
 //main function
 void main()
 {   
-    int n;
-    printf("Select a choice\n1.Push\n2.Pop\n3.Peek\n4.Display\n5.Quit");
+    int n,item;
+    do
+    {printf("\nSelect a choice\n1.Push\n2.Pop\n3.Peek\n4.Display\n5.Quit\n");
     scanf("%d",&n);
+    switch (n)
+    {
+    case 1:
+        printf("Enter a number:");
+        scanf("%d",&item);
+        push(item);
+        break;
+    case 2:
+        pop();
+        break;
+    case 3:
+        peek();
+        break;
+    case 4:
+        traverse();
+        break;
+    case 5:
+        printf("The programme is terminated");
+        exit(0);
+    
+    default:
+        {printf("Invalid choice\n");
+        break;}
+    }}
+    while(n!=5);
+    
 
 
 }
