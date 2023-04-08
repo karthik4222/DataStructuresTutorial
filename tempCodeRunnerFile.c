@@ -42,7 +42,8 @@ int main()
         insert(x);
         print();
     }
-}
 
    
 
+
+}
